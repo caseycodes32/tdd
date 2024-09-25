@@ -18,7 +18,6 @@ class TestCounterEndPoints:
         """It should create a counter"""
         result = client.post('/counters/foo')
         assert result.status_code == status.HTTP_201_CREATED
-        pass
 
     def test_duplicate_a_counter(self, client):
         """It should return an error for duplicates"""
@@ -26,7 +25,6 @@ class TestCounterEndPoints:
         assert result.status_code == status.HTTP_201_CREATED
         result = client.post('/counters/bar')
         assert result.status_code == status.HTTP_409_CONFLICT
-        pass
 
     def test_update_a_counter(self, client):
         #create a couter and check that the result is 201
@@ -44,6 +42,5 @@ class TestCounterEndPoints:
         result = client.put('/counters/xyz')
         assert result.status_code == status.HTTP_200_OK
         assert result.data == b'{"xyz":2}\n'
-        pass
 
 
