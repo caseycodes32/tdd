@@ -35,7 +35,7 @@ def update_counter(name):
         return {"Message":  f"Counter {name} not found"}, status.HTTP_404_NOT_FOUND
 
 
-@app.route('/counters/<name>', methods=['DELETE']) 
+@app.route('/counters/<name>', methods=['DELETE'])
 def delete_counter(name):
     """Delete a counter"""
     app.logger.info(f"Request to update a counter: {name}")
