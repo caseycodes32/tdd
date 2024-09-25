@@ -42,5 +42,15 @@ class TestCounterEndPoints:
         result = client.put('/counters/xyz')
         assert result.status_code == status.HTTP_200_OK
         assert result.data == b'{"xyz":2}\n'
-
+    
+    def test_delete_a_counter(self, client):
+        #create a couter and check that the result is 201
+        result = client.post('/counters/del')
+        assert result.status_code == status.HTTP_201_CREATED
+        #delete the counter, and check that the result is 402
+        result = client.delete('/counters/del')
+        assert result.status_code == status.HTTP_204_NO_CONTENT
+        #try to increment the counter, and ensure it responds a 404
+        result = client.put('/counters/del')
+        assert result.status_code == status.HTTP_404_NOT_FOUND
 
